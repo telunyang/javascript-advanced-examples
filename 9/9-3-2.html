@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>範例 9-3-2.html</title>
+</head>
+<body>
+    <button id="btn1">Button 1</button><br>
+    <button id="btn2">Button 2</button><br>
+    <div id="console"></div>
+
+    <script>
+    //第一個 window.onload 事件
+    window.onload = function() {
+        //自訂事件處理器
+        function handler() {
+            document.getElementById('console').innerHTML 
+                    = 'Who\'s clicked: ' + this.id;
+        }
+
+        //為 btn1 註冊事件 handler
+        document.getElementById('btn1').onclick = handler;
+    };
+
+    //下面的 window.onload 會覆蓋上面的 window.onload
+    window.onload = function() {
+        //自訂事件處理器
+        function handler() {
+            document.getElementById('console').innerHTML 
+                    = 'Who\'s clicked: ' + this.id;
+        }
+
+        //為 btn2 註冊事件 handler
+        document.getElementById('btn2').onclick = handler;
+    };
+    </script>
+</body>
+</html>

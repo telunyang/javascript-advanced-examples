@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>範例 9-3-4.html</title>
+</head>
+<body>
+    <button id="btn1">Button 1</button><br>
+    <button id="btn2">Button 2</button><br>
+    <div id="console"></div>
+
+    <script>
+    //當網頁讀取完畢後
+    window.addEventListener('load', function() {
+        //自訂事件處理器
+        function handler() {
+            document.getElementById('console').innerHTML 
+                    = 'Who\'s clicked: ' + this.id;
+        }
+        document.getElementById('btn1')
+            .addEventListener('click', handler, false);
+        document.getElementById('btn2')
+            .addEventListener('click', handler, false);
+    }, false);
+    </script>
+</body>
+</html>

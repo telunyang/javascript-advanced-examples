@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>範例 9-3-8.html</title>
+</head>
+<body>
+    <div id="outA" style="width:400px; height:400px; background:#CDC9C9;position:relative;">
+        <div id="outB" style="height:200; background:#0000ff;top:100px;position:relative;">
+            <div id="outC" style="height:100px; background:#FFB90F;top:50px;position:relative;"></div> 
+        </div>
+    </div>
+
+    <script>
+    window.onload = function(){
+        var outA = document.getElementById("outA"); 
+        var outB = document.getElementById("outB"); 
+        var outC = document.getElementById("outC"); 
+        
+        //addEventListener 第三個引數：
+        // false 是支援 Event Bubbling
+        // true 是指援 Event Capturing
+        outA.addEventListener('click', function(){ alert(1); }, false);
+        outB.addEventListener('click', function(){ alert(2); }, false);
+        outC.addEventListener('click', function(){ alert(3); }, false);
+    };
+    </script>
+</body>
+</html>

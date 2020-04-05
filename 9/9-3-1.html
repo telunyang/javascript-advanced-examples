@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>範例 9-3-1.html</title>
+</head>
+<body>
+    <button id="btn1" onclick="handler(this)">Button 1</button><br>
+    <button id="btn2" onclick="handler(this)">Button 2</button><br>
+    <div id="console"></div>
+
+    <script>
+    //自訂事件處理器
+    function handler(e) {
+        document.getElementById('console').innerHTML 
+                = 'Who\'s clicked: ' + e.id;
+    }
+    </script>
+</body>
+</html>
