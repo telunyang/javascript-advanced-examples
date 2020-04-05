@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>範例 12-1-1.html</title>
+</head>
+<body>
+
+    <script>
+    function run01(){
+        setTimeout(function(){
+            console.log("Step: setTimeout() in run01()");
+        }, 5000);
+
+        console.log("Step: console.log() in run01()");
+    }
+
+    function run02(){
+        setTimeout(function(){
+            console.log("Step: setTimeout() in run02()");
+        }, 3000);
+
+        console.log("Step: console.log() in run02()");
+    }
+
+    run01();
+    run02();
+    </script>
+</body>
+</html>
