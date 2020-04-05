@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>範例 15-1-1.html</title>
+</head>
+<body>
+
+    <script>
+    class Person {
+        constructor(height, width) {
+            this.height = height;
+            this.age = null;
+        }
+
+        getInfo(){
+            return `Height: ${this.height}, Age: ${this.age}`;
+        }
+
+        setAge(age){
+            this.age = age;
+        }
+    }
+
+    let obj = new Person(160);
+    obj.setAge(17);
+
+    document.write( obj.getInfo() );
+    </script>
+</body>
+</html>
