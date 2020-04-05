@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>範例 8-3-1.html</title>
+    <style>
+    .thumb {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }
+    input#files{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <form name="myForm" 
+        action="" 
+        method="POST" 
+        enctype="multipart/form-data">
+        <h3>請選擇所要上傳的檔案</h3>
+    
+    <!-- input[type=file] 的標籤已經被隱藏起來了 -->
+    <input type="file" name="fileUpload[]" id="files" multiple />
+
+    <!-- 自訂的按鈕會有 onclick 屬性，註冊了點選 input[type=file] 標籤的功能  -->
+    <input type="submit" name="smb" id="smb" 
+        onclick="document.getElementById('files').click(); return false;" 
+        value="選擇檔案" />
+
+    </form>
+    
+    <hr />
+
+    <ul id="list"></ul>
+
+    <script>
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList 物件
+
+        //個別走訪多重選擇的檔案
+        for (var i = 0, f; f = files[i]; i++) {
+
+            // 僅處理 image/jpeg、image/png 等格式的圖片檔案
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            //建立 FileReader 物件
+            var reader = new FileReader();
+
+            //透過閉包將 f 引數帶到 IIFE 的 function 作為參數
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    //產生縮圖
+                    var li = document.createElement('li');
+
+                    //透過陣列結合的方式，將各種陣列元素中的字串合併
+                    li.innerHTML = [
+                        '<img class="thumb" src="', 
+                        e.target.result,
+                        '" title="', 
+                        escape(theFile.name), 
+                        '"/>'
+                    ].join('');
+
+                    //新增 li 元素
+                    document.getElementById('list').insertBefore(li, null);
+                };
+            })(f);
+
+            // 以 data URL 的格式來讀取圖檔
+            reader.readAsDataURL(f);
+        }
+    }
+
+    //監聽多選檔案之後的事件
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+</body>
+</html>
