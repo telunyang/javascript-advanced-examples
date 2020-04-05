@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>範例 5-1-1.html</title>
+</head>
+<body>
+    <p style="color: #7878ff; line-height: 3; font-size: 30px;">Hello World<br />Good job!</p>
+    <button id="btn01">按鈕01</button>
+    <button id="btn02">按鈕02</button>
+    <button id="btn03">按鈕03</button>
+    
+    <script>
+    //取得所有 body 裡面的 nodes
+    var children = document.body.childNodes;
+
+    //輸出現有的 nodes 有多少個
+    console.log(children.length); // 10
+
+    //新增 p 元素，加入內部文字，再加到 body 當中
+    let p = document.createElement('p');
+    let txtNode = document.createTextNode("JavaScript");
+    p.appendChild(txtNode);
+    document.body.appendChild(p);
+
+    //輸出現有的 nodes 有多少個
+    console.log(children.length); // 11
+
+    //取得 body 底下所有 node 的 iterator
+    for (var entry of children.entries()) {
+        console.log(entry);
+    }
+
+    //取得 p node
+    let pNode = document.body.childNodes.item(1);
+    //let pNode = document.body.childNodes[1]; //這種格式也可以用
+    console.log(pNode);
+    </script>
+</body>
+</html>
