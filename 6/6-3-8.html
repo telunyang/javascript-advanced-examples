@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>範例 6-3-8.html</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+    var name = '小王';
+    var age = 17;
+
+    //以下使用一般的物件方法
+    var obj = {
+        name: '小強',
+        objAge: this.age,
+        myFunc: function(nickname, identity){
+            console.log(`我是 ${this.name}, 年紀是 ${this.age}；`);
+            console.log(`暱稱是 ${nickname}, 身分是 ${identity}`);
+        }
+    };
+
+    //當作 this 參數的物件
+    var objArg = {
+        name: '小倫',
+        age: 99
+    };
+
+    obj.myFunc.call(objArg, '擺渡人', '學生'); //引數逐個置入
+    obj.myFunc.apply(objArg, ['擺渡人', '學生']); //引數透過 [] 包裝後，再置入
+    obj.myFunc.bind(objArg, '擺渡人', '學生')(); //引數逐個置入
+
+    let newFunc = obj.myFunc.bind(objArg, '擺渡人', '學生'); //引數逐個置入
+    newFunc();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>範例 6-3-7.html</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+    var name = '小王';
+    var age = 17;
+
+    //以下使用一般的物件方法
+    var obj = {
+        name: '小強',
+        objAge: this.age,
+        myFunc: function(){
+            console.log(this.name, this.age);
+        }
+    };
+
+    //當作 this 參數的物件
+    var objArg = {
+        name: '小倫',
+        age: 99
+    };
+
+    //.call() 可以把 objArg 當作 obj.myFunc() 當中的變數，
+    //讓 myFunc() 可以把 objArg 裡面的 key: value 組合，
+    //當成自己的內部變數來使用
+    obj.myFunc.call(objArg);
+
+    //.apply() 原則上跟 .call() 用法一樣，
+    //差異在於後面有 arg1,...,argN 的時候，
+    //要用 [] 把其它 arg1,...argN 包進去
+    obj.myFunc.apply(objArg);
+
+    //.bind() 也跟 call() 用法差不多，
+    //差異在於回傳的是新的 function，
+    //我需要在 .bind() 後面，再加上 () 來執行
+    obj.myFunc.bind(objArg)();
+    
+    //或是 .bind() 賦予回傳結果到一個變數上，再透過變數名稱後面加上 () 來執行
+    let newFunc = obj.myFunc.bind(objArg);
+    newFunc();
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>範例 6-3-6.html</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+    var name = '小王';
+    var age = 17;
+
+    //以下使用一般的物件方法
+    var obj = {
+        name: '小強',
+        objAge: this.age,
+        myFunc: function(){
+            //在 function 中，
+            //this.age 是指 obj 本身 {…} 當中的 age，
+            //但我們沒有定義 age，所以會顯示 undefined
+            console.log(this.name, this.age);
+        }
+    };
+
+    console.log(obj.objAge); //輸出 17
+    obj.myFunc(); //輸出 小強 undefined
+    </script>
+</body>
+</html>

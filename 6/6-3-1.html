@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>範例 6-3-1.html</title>
+</head>
+<body>
+    <p id="demo"></p>
+
+    <script>
+    //建立一個物件，裡面有定義方法（method），這是先決條件；
+    //在這裡的 this，是指 person = {...} block 裡面的成員
+    var person = {
+        firstName: "大 Guy",
+        lastName : "4 John",
+        id     : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+    };
+    
+    //使用物件的方法，來取得回傳的資料
+    document.getElementById("demo").innerHTML = person.fullName();
+    </script>
+</body>
+</html>
