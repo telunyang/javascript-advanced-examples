@@ -53,6 +53,6 @@ function showImages(){
         ul.appendChild(li);
     }
     
-    //將 textarea
+    //將 textarea 內的文字清空
     html.value = '';
 }
